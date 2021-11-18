@@ -4,7 +4,7 @@ const initialUserState = {
     name: "",
     email: "",
     password: "",
-    loggedIn: false,
+    isLoggedIn: false,
 };
 
 export const userSlice = createSlice({
@@ -15,10 +15,7 @@ export const userSlice = createSlice({
     },
     reducers: {
         register: (state, action) => {
-            // state.registeredUsers = [...state.registeredUsers, action.payload]
-            
             state.registeredUsers = [...state.registeredUsers, action.payload]
-            // user.registeredUsers = action.payload
         },
         login: (state, action) => {
             state.currentUser = action.payload 

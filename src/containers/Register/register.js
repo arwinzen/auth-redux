@@ -1,22 +1,17 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../features/auth';
 import { useNavigate } from 'react-router-dom';
 
-function Register(props) {
+function Register() {
     // 
     const [ name, setName ] = useState("");
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
-    // let name = useRef();
-    // let email = useRef();
-    // let password = useRef();  
     let navigate = useNavigate();
     // console.log(useSelector(registeredUsers));
     const registeredUsers = useSelector((state) => state.registeredUsers);
-    // let users = useSelector(state => state.registeredUsers);
-    // console.log(registeredUsers);
     
     const dispatch = useDispatch();
     // const registeredUsers = useSelector((state) => state.registeredUsers);
@@ -25,10 +20,8 @@ function Register(props) {
         e.preventDefault();
         console.log(name, email, password);
         if (!name || !email || !password){
-            alert('Please fill up all fields');
-        } 
-        
-        if (registeredUsers.find(user => user.email === email)){
+            alert('Please fill in all fields');
+        } else if (registeredUsers.find(user => user.email === email)){
             alert('Email has been registered before');
         } 
         else {
@@ -40,7 +33,7 @@ function Register(props) {
             }))
             alert(`User ${name} successfully created. Please Login`);
             console.log(registeredUsers);
-            // navigate("/");
+            navigate("/");
         }
     }
 
@@ -55,7 +48,6 @@ function Register(props) {
                     autoFocus 
                     placeholder="Name"
                     onChange={(e) => setName(e.target.value)}
-                    // ref={(e) => name = e}
                 />
                 <label htmlFor="email"></label>
                 <input 
@@ -63,7 +55,6 @@ function Register(props) {
                     type="email" 
                     placeholder="Email" 
                     onChange={(e) => setEmail(e.target.value)}
-                    // ref={(e) => email = e}
                 />
                 <label htmlFor="password"></label>
                 <input 
@@ -71,7 +62,6 @@ function Register(props) {
                     type="password" 
                     placeholder="Password" 
                     onChange={(e) => setPassword(e.target.value)}
-                    // ref={(e) => password = e}
                 />
                 <button type="submit">Register</button>
             </form>

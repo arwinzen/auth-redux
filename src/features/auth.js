@@ -26,9 +26,10 @@ export const userSlice = createSlice({
     }
 })
 
+// export actions
 export const { register, login, logout } = userSlice.actions;
 
-export const selectUser = (state) => state.currentUser;
-export const registeredUsers = (state) => state.registeredUsers;
+// export const selectUser = (state) => state.currentUser;
+// export const registeredUsers = (state) => state.registeredUsers;
 
 export default userSlice.reducer;
